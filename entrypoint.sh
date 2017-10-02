@@ -21,7 +21,6 @@ password = SPLUNK_PASS
 index = SPLUNK_INDEX
 __CONFIG__
 
-	# Configure based on passed environment variables
 	if [ -z $SPLUNK_SERVER ]; then
 		echo "ERROR: \$SPLUNK_SERVER is not defined"
 		exit 1
@@ -53,6 +52,14 @@ __CONFIG__
 	else
 		sed -i "s/SPLUNK_INDEX/$SPLUNK_INDEX/" /opt/paste2splunk/settings.conf
 	fi
+
+	# Enable logrotage
+	cat <<__LOGROTATE__ >/etc/cron.daily/logrotate
+#!/bin/sh
+test -x /usr/sbin/logrotate || exit 0
+/usr/sbin/logrotate /opt/paste2splunk/logrotate.conf
+__LOGROTATE__
+	chmod 0755 /etc/cron.daily/logrotate
 
 	# Unpack YARA rules 
 	cd /opt/paste2splunk
