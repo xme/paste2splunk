@@ -1,0 +1,23 @@
+#
+# Docker compose file for paste2splunk
+#
+version: '2'
+networks:
+  bridge:
+    driver: bridge
+services:
+  paste2splunk:
+    image: "paste2splunk:latest"
+    restart: always
+    hostname: paste2splunk
+    container_name: paste2splunk
+    environment:
+      - SPLUNK_SERVER=192.168.0.1
+      - SPLUNK_PORT=8089
+      - SPLUNK_USER=user
+      - SPLUNK_PASS=pass
+      - SPLUNK_INDEX=pastebin
+    volumes:
+      - /data/paste2splunk/YaraRules:/opt/paste2splunk/YaraRules
+    networks:
+      - bridge
