@@ -7,7 +7,7 @@ You can use it in a standalone way or in a Docker.
 ## Standalone
 Close the project in a local directory:
 
-# git clone https://github.com/xme/paste2splunk.git
+$ git clone https://github.com/xme/paste2splunk.git
 
 Then edit the file settings.conf
 
