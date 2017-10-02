@@ -1,0 +1,8 @@
+include "powershell.yar"
+include "general.yar"
+include "api_keys.yar"
+include "database.yar"
+include "base64.yar"
+include "core_keywords.yar"
+include "hak5.yar"
+include "password_leak.yar"
