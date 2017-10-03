@@ -3,7 +3,7 @@ MAINTAINER Xavier Mertens <xavier@rootshell.be>
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y yara git python-pip python-yara python-requests python-coverage python-configparser cron
+    apt-get install -y yara git python-pip python-yara python-requests python-coverage python-configparser cron logrotate
 
 RUN pip install splunk-sdk
 WORKDIR /opt
